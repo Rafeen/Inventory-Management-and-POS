@@ -1,0 +1,107 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    {#Create Client Page#}
+    <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="modal-content col-md-8">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Create Client</h4>
+            </div>
+            <div class="modal-body">
+                <form id='add-client' class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                    <div class="btn-right">
+                        <button type="submit" class="btn btn-info btn-flat btn-addon "><i
+                                class="fa fa-user"></i>Create Client
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        {#Add Client Field#}
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                {#Client Name Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_name">Client Name<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-user"></i></span>
+                                            <input class="form-control" name="client_name" type="text"
+                                                   id="client_name"
+                                                   required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Client Email Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address">Email<span
+                                                class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                                    <span class="input-group-addon"><i
+                                                            class="fa fa-envelope-o"></i></span>
+                                            <input class="form-control" name="client_email" type="text"
+                                                   id="client_email"
+                                                   required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Client Address Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="address">Address<span
+                                                class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                                    <span class="input-group-addon"><i
+                                                            class="fa fa-address-card-o"></i></span>
+                                            <input class="form-control" name="clien_address" type="text"
+                                                   id="client_address"
+                                                   required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Client Phone Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label class="control-label">Phone Number<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"
+                                                                                       aria-hidden="true"></i></span>
+                                            <input class="form-control" name="cleint_Phone" type="tel"
+                                                   value=""
+                                                   id="client_phone" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Client Description Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_des">Client description <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <textarea id=client_description class="form-control" rows="3"
+                                                  placeholder="Text input"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#clients-menu").addClass("active open");
+        $("#create-client-menu").addClass("active");
+
+    </script>
+{% endblock %}

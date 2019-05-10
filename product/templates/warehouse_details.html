@@ -1,0 +1,143 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#Warehouse Details Page#}
+
+     <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">Create Warehouse</h4>
+        </div>
+        <div class="modal-body">
+            <form id='add-warehouse' class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                <div class="btn-right">
+                        {#Button Action Function Added#}
+                        <button onclick="activeFunction();" id="edit"
+                                class="btn btn-info active btn">
+                            <i class="fas fa-user-edit"></i> Edit
+                        </button>
+                    </div>
+                <div class="tab-content">
+                    <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Warehouse Name<span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                        <input class="form-control" name="wh_name" type="text" id="wh_name" value="{{ warehouse.wh_name }}" required="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="address">Address<span
+                                            class="text-danger"></span> </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-address-card-o"></i></span>
+                                        <input class="form-control" name="address" value="{{ warehouse.wh_address }}" type="text" id="wh_address"
+                                               required="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="city">City <span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-building"></i></span>
+                                        <input class="form-control" name="city" type="text"
+                                               value="{{ warehouse.wh_city }}" id="wh_city" required="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-phone"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="Phone" type="tel" value="{{ warehouse.wh_phone }}"
+                                               id="wh_phone" required="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="role_id">Country<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                        <input class="form-control" id="wh_country"
+                                               name="country" tabindex="-1" aria-hidden="true" value="{{ warehouse.wh_country }}" required="" disabled>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">Status <span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group"><span class="input-group-addon"><i
+                                            class="fa fa-align-left"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="wh_status"
+                                                name="user_status" tabindex="-1" aria-hidden="true" required="" disabled>
+                                            <option value="Active" {% if warehouse.wh_status == 'active' %} selected {% endif %}>Active
+                                        </option>
+                                        <option value="Deactive" {% if not warehouse.wh_status == 'active' %}
+                                                selected {% endif %}>Deactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="role_id">Type<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="wh_type"
+                                                name="" tabindex="-1" aria-hidden="true" required="" disabled>
+                                            <option value="Outlet" {% if warehouse.wh_type == 'Outlet' %} selected {% endif %}>Outlet
+                                        </option>
+                                        <option value="Store House" {% if not warehouse.wh_type == 'Store House' %}
+                                                selected {% endif %}>Store House</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                  <div class="m-t-20 text-center">
+                <button type="submit"
+                        class="btn btn-info btn-flat sweet-success sweetalert btn-addon m-b-10 m-l-5">
+                    <i class="fa fa-home"></i>Warehouse Update
+                </button>
+            </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        function activeFunction() {
+            document.getElementById("wh_name").disabled = false;
+            document.getElementById("wh_address").disabled = false;
+            document.getElementById("wh_city").disabled = false;
+            document.getElementById("wh_phone").disabled = false;
+            document.getElementById("wh_country").disabled = false;
+            document.getElementById("wh_status").disabled = false;
+            document.getElementById("wh_type").disabled = false;
+        }
+
+    </script>
+
+{% endblock %}

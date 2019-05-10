@@ -1,0 +1,147 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">Stock Details</h4>
+        </div>
+        <form class="m-b-30" _lpchecked="1" action="" method=""
+              accept-charset="UTF-8" enctype="multipart/form-data"
+              data-parsley-validate="">
+            <div class="tab-content">
+                <div class="modal-body">
+                    <div class="btn-right">
+                        {#added js fucntion#}
+                        <button onclick="activeFunction();" id="edit"
+                                class="btn btn-info active btn">
+                            <i class="fas fa-user-edit"></i> Edit
+                        </button>
+                    </div>
+                    {#Stock Information Field#}
+                    <div class="tab-content">
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                {#Stock Description Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="batch">Batch Number <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-ticket"></i></span>
+                                            <input class="form-control" name="batch_number" type="text" id="batch_number"
+                                                   value='{{ stock.batch_number }}' required="" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Purchase Price#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="purchase_price">Purchase Price<span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                            <input class="form-control" name="purchase_price" type="text"
+                                                   value="{{ stock.purchase_price }}" id="purchase_price" required="" disabled>
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                                {#Purchase Tax#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="purchase_tax">Purchase Tax<span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                            <input class="form-control" name="purchase_tax" type="text" value="{{ stock.purchase_tax }}"
+                                                   id="purchase_tax" required="" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Stock Quantity#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="stock_quality">Stock Quantity<span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-archive"></i></span>
+                                            <input class="form-control" name="stock_quantity" type="text" value="{{ stock.stock_quantity }}"
+                                                   id="stock_quantity" required="" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Status#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="stock_status">Status<span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-align-left"></i></span>
+                                            <select class="form-control select2-hidden-accessible" id="stock_status"
+                                                    name="stock_status" tabindex="-1" aria-hidden="true" disabled>
+                                                <option value="Active" {% if stock.status == 'active' %} selected {% endif %}>Active
+                                        </option>
+                                        <option value="Deactive" {% if not stock.status == 'active' %}
+                                                selected {% endif %}>Deactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Stock Product Sku#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="status">SKU ID<span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                            <select class="form-control select2-hidden-accessible" id="stock_sku"
+                                                    name="stock_sku" tabindex="-1" aria-hidden="true" disabled>
+                                                {% for product in products %}
+                                                    <option value="{{ product.sku }}" {% if stock.sku.sku == product.sku %}
+                                                            selected
+                                                        {% endif %}>{{ product.product_name }}-SKU:({{ product.sku }})</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="m-t-20 text-center">
+                                <button type="submit"
+                                        class="btn btn-info btn-flat sweet-success sweetalert btn-addon m-b-10 m-l-5">
+                                    <i class="fa fa-user"></i>Stock Update
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </form>
+    </div>
+    </div>
+    {#JavaScript Code for Button Action#}
+    <script type="text/javascript">
+
+        function activeFunction() {
+            document.getElementById("batch_number").disabled = false;
+            document.getElementById("purchase_price").disabled = false;
+            document.getElementById("purchase_tax").disabled = false;
+            document.getElementById("stock_quantity").disabled = false;
+            document.getElementById("stock_sku").disabled = false;
+            document.getElementById("stock_status").disabled = false;
+
+
+        }
+
+
+    </script>
+{% endblock %}

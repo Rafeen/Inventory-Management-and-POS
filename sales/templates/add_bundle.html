@@ -1,0 +1,72 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {# Fring- add bundle form #}
+    <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="modal-content col-md-8">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Create Bundle</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-bundle" class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                    <div class="btn-right">
+                        <button type="submit" class="btn btn-info btn-flat btn-addon"><i
+                                class="fa fa-user"></i>Create Bundle
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                <!--Bundle Name Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_name">Bundle Name<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-file-archive-o"></i></span>
+                                            <input class="form-control" name="bundle_name" type="text" id="bundle_name"
+                                                   required="" data-parsley-type="alphanum">
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Bundle Description Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_des">Bundle description <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <textarea class="form-control" id="bundle_des" rows="3"
+                                                  placeholder="Text input"></textarea>
+                                    </div>
+                                </div>
+                                <!--Bundle Status Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_status">Bundle Status <span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-align-left"></i></span>
+                                            <input class="form-control" name="bundle_status" type="text" value=""
+                                                   id="bundle_status" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#bundle-menu").addClass("active open");
+        $("#create-bundle-menu").addClass("active");
+
+    </script>
+{% endblock %}

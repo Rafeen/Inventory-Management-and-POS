@@ -1,0 +1,326 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">Create Product</h4>
+        </div>
+        <div class="modal-body">
+            <form id="add-product" class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                <div class="btn-right">
+                    <button type="submit" class="btn btn-info btn-flat btn-addon">
+                        <i class="fa fa-product-hunt"></i>Create Product
+                    </button>
+                </div>
+                <div class="tab-content">
+                    <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                        <div class="panel-body">
+                            <!--Product Name Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="p_name">Product Name <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-product-hunt"></i></span>
+                                        <input class="form-control" name="p_name" type="text" id="p_name" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Product SKU -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="p_name">SKU <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-id-badge"></i></span>
+                                        <input class="form-control" name="sku" type="text" id="sku" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Catagory Id Field -->
+                            <div class="col-md-6 col-sm-12">
+                                <div class="col-md-8 col-sm-9 custom-margin-left">
+                                    <div class="form-group">
+                                        <label for="pro_ct">Catagory Id<span class="text-danger">*</span> </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="category_id"
+                                                    name="category_id" tabindex="-1" aria-hidden="true">
+                                                {% for category in categories %}
+                                                    <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-3 col-sm-3 custom-margin-button">
+                                    <button type="button" id="button" class="btn btn-cat btn-sm" data-toggle="modal"
+                                            data-target="#create-category-modal">Create new category
+                                    </button>
+                                </div>
+                            </div>
+                            <!--Brand Id Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pro_br">Brand Id <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-tags"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="brand_id"
+                                                name="brand_id" tabindex="-1" aria-hidden="true">
+                                            {% for brand in brands %}
+                                                <option value="{{ brand.brand_id }}">{{ brand.brand_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Product Price Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pro_pr">Price <span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        <input class="form-control" name="pro_pr" type="text" value="" id="pro_pr"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Tax Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="pro_tax">Tax<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-money"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="pro_tax" type="text" value="" id="pro_tax"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Product Description -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="pro_tax">Product Description<span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-file-text"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="pro_des" type="text" value="" id="pro_des"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Color -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="pro_tax">Color<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-superpowers"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="pro_color" type="text" value="" id="pro_color"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Size -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="pro_tax">Size<span class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-archive"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="pro_size" type="text" value="" id="pro_size"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Weight -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="pro_tax">Weight<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-anchor"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="pro_weight" type="text" value=""
+                                               id="pro_weight" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Comment Field -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="pro_cm">Comment<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-comment"></i></span>
+                                        <input class="form-control select2-hidden-accessible" id="pro_cm" name="pro_cm"
+                                               tabindex="-1" aria-hidden="true" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <!--Image -->
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <div class="row div-margin-custom-3">
+                                        <label for="name">Upload Picture<span class="text-danger">*</span></label>
+                                    </div>
+                                    <input type="file" id="real-file" class="hidden"/>
+                                    <button type="button" id="custom-button" class="btn btn-choose btn-flat">Choose File
+                                    </button>
+                                    <span id="custom-text">No file chosen</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    {#Category modal#}
+    <div class="modal fade" id="create-category-modal" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <!-- Modal content-->
+                    <div class="col-md-12">
+                        <div class="col-md-2"></div>
+                        <div class="modal-content col-md-8">
+                            <div class="modal-body">
+                                <form id="add-category" class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                                    <div class="tab-content">
+                                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                                            <div class="col-md-12 panel-heading">
+                                                <div class="col-md-6">Create Catagory</div>
+                                                <div>
+                                                    <a href="" data-dismiss="modal"
+                                                       class="col-md-6 custom-close">Close</a>
+                                                    </button>
+                                                </div>
+                                            </div>
+                                            <div class="panel-body">
+                                                <!--Catagory Name Field-->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="category_name">Catagory Name<span
+                                                                class="text-danger">*</span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i class="fa fa-list"></i>
+                                                        </span>
+                                                            <input class="form-control" name="category_name" type="text"
+                                                                   id="category_name"
+                                                                   required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Parent Category Field-->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="parent_id">Parent Id <span
+                                                                class="text-danger">*</span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-ticket"></i></span>
+                                                            <select class="form-control select2-hidden-accessible"
+                                                                    id="parent_id"
+                                                                    name="parent_id" tabindex="-1" aria-hidden="true">
+                                                                {% for category in categories %}
+                                                                    <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+                                                                {% endfor %}
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="category_des">Catagory description <span
+                                                                class="text-danger"></span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-book"></i></span>
+                                                            <input class="form-control" name="category_des"
+                                                                   type="text"
+                                                                   value="" id="category_des" required="">
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!--Category Status Field-->
+                                                <div class="col-md-12">
+                                                    <div class="form-group">
+                                                        <label for="category_status">Catagory Status <span
+                                                                class="text-danger"></span>
+                                                        </label>
+                                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-ticket"></i></span>
+                                                            <select class="form-control select2-hidden-accessible"
+                                                                    id="category_status"
+                                                                    name="category_status" tabindex="-1"
+                                                                    aria-hidden="true">
+                                                                <option value="active">Active</option>
+                                                                <option value="deactive">Deactive</option>
+                                                            </select>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="text-center">
+                                                    <button type="submit"
+                                                            class="btn btn-info btn-flat btn-addon"><i
+                                                            class="fa fa-list"></i>Add
+                                                    </button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
+                            <div class="col-md-2"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+        customBtn.addEventListener("click", function () {
+            realFileBtn.click();
+        });
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(
+                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                )[1];
+            } else {
+                customTxt.innerHTML = "No file chosen, yet.";
+            }
+        });
+
+    </script>
+{% endblock %}
+{% block script %}
+    <script>
+
+        $("#product-menu").addClass("active open");
+        $("#add-product-menu").addClass("active");
+
+    </script>
+{% endblock %}

@@ -1,0 +1,122 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    {#    CLient Sales Page#}
+    <div class="col-md-12">
+        <div class="modal-content col-md-12">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Client Sales</h4>
+            </div>
+            <div class="modal-body">
+
+                <form id="add-client-sales" class="m-b-30" _lpchecked="1">
+                    <div class="btn-right">
+                        <button type="submit"
+                                class="btn btn-info btn-flat btn-addon sweet-success sweetalert">
+                            <i class="fa fa-user"></i>Submit
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        {# Client Sales Field#}
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                {# SKU Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">SKU/Product Name<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-archive"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="stock_id"
+                                                    tabindex="-1" aria-hidden="true">
+                                                {% for stock in stocks %}
+                                                    <option value="{{ stock.stock_id }}">{{ stock.sku.product_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                {# Quantity Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">Quantity<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-slack"></i></span>
+                                            <input class="form-control" name="quantity" type="text"
+                                                   id="quantity"
+                                                   required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Client#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">Client<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-male"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="clients"
+                                                    name="clients" tabindex="-1" aria-hidden="true">
+                                                {% for client in clients %}
+                                                    <option value="{{ client.client_id }}">{{ client.client_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Warehouse field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">Warehouse<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="warehouse"
+                                                    name="warehouse" tabindex="-1" aria-hidden="true">
+                                                {% for warehouse in warehouses %}
+                                                    <option value="{{ warehouse.wh_id }}">{{ warehouse.wh_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                {#Date Field#}
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand_status">Date <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-calendar-o"></i></span>
+                                            <input class="form-control" name="date" type="date" value=""
+                                                   id="date" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#client-sales-menu").addClass("active open");
+        $("#client-sales-page-menu").addClass("active");
+
+    </script>
+{% endblock %}

@@ -1,0 +1,119 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="col-md-12">
+        <div class="modal-content col-md-12">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Add Transaction</h4>
+            </div>
+            <div class="modal-body">
+                <div class="btn-right">
+                    <button type="submit" class="btn btn-info btn-flat btn-addon sweet-success sweetalert"><i
+                            class="fa fa-user"></i>Add Bundle
+                    </button>
+                </div>
+                <form id="add-transaction" class="m-b-30" _lpchecked="1">
+                    <div class="tab-content">
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                <!--Bundle Name Field-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand_name">Order ID<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-id-card-o"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="order_id"
+                                                    name="order_id" tabindex="-1" aria-hidden="true">
+                                                {% for order in orders %}
+                                                    <option value={{ order.id }}>{{ order.client }}-{{ order.order_id }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Bundle Description Field-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="status">Payment Amount <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-ticket"></i></span>
+                                            <input class="form-control" name="pay_amount" type="text" id="pay_amount"
+                                                   required="">
+                                            <input id="creator" type="hidden" value={{ request.user.name }}>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand_status">Payment Method<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-money"></i></span>
+                                            <input class="form-control" name="payment_type" type="text" value=""
+                                                   id="payment_type" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand_status">Status<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-money"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="transaction_status"
+                                                    name="transaction_status" tabindex="-1" aria-hidden="true">
+                                                <option value="active">Active</option>
+                                                <option value="deactive">Deactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand_status">Transaction Date <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-calendar-o"></i></span>
+                                            <input class="form-control" name="transaction_date" type="date" value=""
+                                                   id="transaction_date" required="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        document.querySelector('.sweet-success').onclick = function () {
+            swal("Registration Completed 😀", "", "success")
+        };
+
+    </script>
+
+{% endblock %}
+
+{% block script %}
+    <script>
+        $("#payment-menu").addClass("active open");
+        $("#add-transaction-menu").addClass("active");
+    </script>
+{% endblock %}

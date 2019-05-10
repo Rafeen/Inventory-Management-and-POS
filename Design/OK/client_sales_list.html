@@ -1,0 +1,44 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+<div class="modal-header">
+        <h4 class="modal-title text-center">All Client Report</h4>
+    </div>
+    <div class="modal-body">
+        <div class="bootstrap-data-table-panel">
+            <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                <thead class="panel panel-success panel-table">
+                <tr class="text-center">
+                    <th>Client Name</th>
+                    <th>Product Name</th>
+                    <th>Quantity</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                </tr>
+                </thead>
+                <tbody>
+                {% for bundle in bundles %}
+                    <tr class="text-center">
+                        <td><a class="link" href="{{ bundle.get_absolute_url }}">{{ bundle.bundle_name }}</a></td>
+                        <td>{{ bundle.bundle_description }}</td>
+                        <td>{{ bundle.status }}</td>
+                        <td>2018-12-08</td>
+                        <td class="text-center">
+                            <div class="dropdown">
+                                <button class="bg-custom-cst dropdown-toggle" type="button" data-toggle="dropdown">Edit
+                                    <span class="caret"></span></button>
+                                <ul class="dropdown-menu dropdown-menu-center">
+                                    <li><a href="{{ bundle.get_absolute_url }}">View</a></li>
+                                    <li><a href="#">Active</a></li>
+                                    <li><a href="#">Delete</a></li>
+                                </ul>
+                            </div>
+                        </td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+{% endblock %}

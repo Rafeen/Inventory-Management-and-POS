@@ -1,0 +1,49 @@
+{% extends 'login_base.html' %}
+
+{% block login %}
+
+    <div class="login-form">
+
+        <h4>Login</h4>
+        <form action= "" method="POST" data-parsley-validate="">
+            {% csrf_token %}
+            <div class="row form-group">
+                <label class="control-label">Email address</label>
+                <div class="has-feedback">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="ti-user"></i></span>
+                        {# Fring-added data-parsley-trigger="change" #}
+                        <input type="email" class="form-control"  name="email" required="" data-parsley-trigger="change">
+                    </div>
+                    {#                    <span class="ti-check form-control-feedback"></span>#}
+                    <span class="sr-only">(success)</span>
+                </div>
+            </div>
+            <div class="row form-group">
+                <label class="control-label">Password</label>
+                <div class="has-feedback">
+                    <div class="input-group">
+                        <span class="input-group-addon"><i class="ti-lock"></i></span>
+                        {# Fring- added data-parsley-minlength="6" #}
+                        <input type="password" class="form-control" required name="password" data-parsley-minlength="5">
+                    </div>
+                    {#                    <span class="ti-check form-control-feedback"></span>#}
+                    <span class="sr-only">(success)</span>
+                </div>
+                <div class="checkbox">
+                        {# Fring- added css class forget-message-position#}
+                    <label class="pull-right forget-message-position">
+                        <a href={{ '/password-reset/' }}>Forgotten Password?</a>
+                    </label>
+                </div>
+            </div>
+            <div class="checkbox">
+                <label>
+                    <input type="checkbox" name="remember" value="True"> Remember Me
+                </label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-flat m-b-30 m-t-30">Sign in</button>
+        </form>
+    </div>
+
+{% endblock login %}

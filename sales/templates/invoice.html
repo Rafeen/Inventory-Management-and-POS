@@ -1,0 +1,190 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="main-content">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="col-md-2"></div>
+                <div class="modal-content col-md-8">
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="control-bar">
+                                <label>Invoice
+                                </label>
+                                <div class="pull-right dib">
+                                    <a class="bg-success" href=""><i class="fa fa-download"></i> Download</a>
+                                    <a class="bg-success" href="javascript:window.print()"><i
+                                            class="fa fa-print"></i> Print</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div id="invoice" class="effect2">
+                                <div id="invoice-top">
+                                    <div class="invoice-info">
+                                        <h2>Order ID</h2>
+                                        <p>Issued: February 15, 2018
+                                        </p>
+                                    </div>
+                                    <!--End OrderInfo-->
+                                    <div class="title">
+                                        <h5>frgtger</h5>
+                                        <p>inventro@gmail.com<br>
+                                            01923-3224523<br>
+                                        </p>
+                                    </div>
+                                    <!--End ClientInfo-->
+                                </div>
+                                <!--End InvoiceTop-->
+                                <div id="invoice-mid">
+                                    <div class="col-lg-6 col-md-6 col-sm-6 col-lg-offset-3  col-md-offset-3 col-sm-offset-3">
+                                        <div class="title">
+                                            <h4>Invoice #10</h4>
+                                            <p id="demo"> Issued:</p>
+
+                                            <script>
+                                                var d = new Date();
+                                                document.getElementById("demo").innerHTML = d;
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--End Invoice Mid-->
+                                <div id="invoice-bot">
+                                    <div id="invoice-table">
+                                        <table class="table table-responsive">
+                                            <tr class="tabletitle">
+                                                <td class="table-item">
+                                                    <h2>Item Description</h2></td>
+                                                <td class="Hours">
+                                                    <h2>Hours</h2></td>
+                                                <td class="Rate">
+                                                    <h2>Rate</h2></td>
+                                                <td class="subtotal">
+                                                    <h2>Sub-total</h2></td>
+                                            </tr>
+                                            <tr class="service">
+                                                <td class="tableitem">
+                                                    <p class="itemtext">Communication</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">5</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">$75</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">$375.00</p>
+                                                </td>
+                                            </tr>
+                                            <tr class="service">
+                                                <td class="tableitem">
+                                                    <p class="itemtext">Asset Gathering</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">3</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">$75</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">$225.00</p>
+                                                </td>
+                                            </tr>
+{#                                            <tr class="service">#}
+{#                                                <td class="tableitem">#}
+{#                                                    <p class="itemtext">Dicount</p>#}
+{#                                                </td>#}
+{#                                                <td class="tableitem">#}
+{#                                                    <p class="itemtext">5</p>#}
+{#                                                </td>#}
+{#                                                <td class="tableitem">#}
+{#                                                    <p class="itemtext">$75</p>#}
+{#                                                </td>#}
+{#                                                <td class="tableitem">#}
+{#                                                    <p class="itemtext">$375.00</p>#}
+{#                                                </td>#}
+{#                                            </tr>#}
+                                            <tr class="service">
+                                                <td class="tableitem">
+                                                    <p class="itemtext"></p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">HST</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">13%</p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext">$419.25</p>
+                                                </td>
+                                            </tr>
+                                             <tr class="service">
+                                                <td class="tableitem">
+                                                    <p class="itemtext"></p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext"></p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext"></p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <h4 class="itemtext">$419.25</h4>
+                                                </td>
+                                            </tr>
+                                              <tr class="service">
+                                                <td class="tableitem">
+                                                    <p class="itemtext"></p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <p class="itemtext"></p>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <h5 class="itemtext">Discount</h5>
+                                                </td>
+                                                <td class="tableitem">
+                                                    <h4 class="itemtext">$419.25</h4>
+                                                </td>
+                                            </tr>
+                                             <tr class="tabletitle">
+                                                <td></td>
+                                                <td></td>
+                                                <td class="Rate">
+                                                    <h2>Total</h2></td>
+                                                <td class="payment">
+                                                    <h2>$3,644.25</h2></td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <!--End Table-->
+                                    <div id="legalcopy">
+                                        <p class="legal"><strong></p>
+                                    </div>
+                                </div>
+                                <!--End InvoiceBot-->
+                            </div>
+                            <!--End Invoice-->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-2"></div>
+            <!-- /# column -->
+        </div>
+        <!-- /# row -->
+    </div>
+    <!-- /# main content -->
+{% endblock %}
+
+{% block script %}
+<script>
+
+            $("#payment-menu").addClass("active open");
+            $("#invoice-menu").addClass("active");
+
+    </script>
+{% endblock %}

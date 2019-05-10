@@ -1,0 +1,63 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#  warehouse list page   #}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">All Warehouses</h4>
+        </div>
+        <div class="modal-body">
+            <div class="bootstrap-data-table-panel"><br>
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                    <thead class="panel panel-success panel-table">
+                    <tr class="text-center">
+                        <th>Name</th>
+                        <th>Address</th>
+                        <th>Phone Number</th>
+                        <th>City</th>
+                        <th>Country</th>
+                        <th>Status</th>
+                        <th>Type</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for warehouse in  warehouses %}
+                        <tr class="text-center">
+                            <td><a class="link" href='{{ warehouse.get_absolute_url }}'>{{ warehouse.wh_name }}</a></td>
+                            <td>{{ warehouse.wh_name }}</td>
+                            <td>{{ warehouse.wh_phone }}</td>
+                            <td>{{ warehouse.wh_city }}</td>
+                            <td>{{ warehouse.wh_country }}</td>
+                            <td>{{ warehouse.wh_status }}</td>
+                            <td>{{ warehouse.wh_type }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="bg-custom-cst dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Edit
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-center">
+                                        <li><a href='{{ warehouse.get_absolute_url }}'>View</a></li>
+                                        <li><a href="#">Active</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- /# card -->
+    <script type="text/javascript">
+        document.querySelector('.sweet-success').onclick = function () {
+            swal("Registration Completed 😀", "", "success")
+        };
+    </script>
+{% endblock %}
+{% block script %}
+    <script>
+        $("#warehouse-menu").addClass("active open");
+        $("#all-warehouse-menu").addClass("active");
+    </script>
+{% endblock %}

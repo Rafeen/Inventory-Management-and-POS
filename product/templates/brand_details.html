@@ -1,0 +1,98 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#Fring- Added brand details page#}
+    {#Fring-Start of Modal#}
+    <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="modal-content col-md-8">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Brand Details</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-brand" class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                    <div class="btn-right">
+                        {#Fring-Edit Action Button#}
+                        <button onclick="activeFunction();" id="edit"
+                                class="btn btn-info active btn">
+                            <i class="fas fa-user-edit"></i> Edit
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                <!--Brand Name Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_name">Brand Name<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-tag"></i></span>
+                                            <input class="form-control" name="brand_name" type="text"
+                                                   id="brand_name" required="" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Brand Description Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_des">Brand Description <span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <textarea class="form-control" id="brand_des" rows="3"
+                                                  placeholder="Text input" disabled></textarea>
+                                    </div>
+                                </div>
+                                <!--Brand Status Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_status">Brand Status <span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-align-left"></i></span>
+                                            <select class="form-control select2-hidden-accessible" id="brand_status"
+                                                    name="brand_status" tabindex="-1" aria-hidden="true" disabled>
+                                                <option value="active">Active</option>
+                                                <option value="deactive">Deactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit"
+                                class="btn btn-info btn-flat btn-addon"><i
+                                class="fa fa-tag"></i>Create Brand
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    {#Fring-JS for Edit Button Action#}
+    <script type="text/javascript">
+
+        function activeFunction() {
+            document.getElementById("brand_name").disabled = false;
+            document.getElementById("brand_des").disabled = false;
+            document.getElementById("brand_status").disabled = false;
+
+        }
+
+    </script>
+
+{% endblock %}
+{% block script %}
+    <script>
+
+        $("#user-menu").addClass("active open");
+        $("#create-user-menu").addClass("active");
+
+    </script>
+{% endblock %}

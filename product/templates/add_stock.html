@@ -1,0 +1,119 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">Create Stock</h4>
+        </div>
+        <div class="modal-body">
+            <form id="add-stock" class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                <div class="btn-right">
+                    <button type="submit"
+                            class="btn btn-info btn-flat btn-addon"><i
+                            class="fa fa-user"></i>Submit
+                    </button>
+                </div>
+                <div class="tab-content">
+                    <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                        <div class="panel-body">
+                            {#Stock Description Field#}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="batch">Batch Number <span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-ticket"></i></span>
+                                        <input class="form-control" name="batch_number" type="text" id="batch_number"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            {#Purchase Price#}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="purchase_price">Purchase Price<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        <input class="form-control" name="purchase_price" type="text" value=""
+                                               id="purchase_price" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            {#Purchase Tax#}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="purchase_tax">Purchase Tax<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-money"></i></span>
+                                        <input class="form-control" name="purchase_tax" type="text" value=""
+                                               id="purchase_tax" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            {#Stock Quantity#}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="stock_quality">Stock Quantity<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-archive"></i></span>
+                                        <input class="form-control" name="stock_quantity" type="text" value=""
+                                               id="stock_quantity" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            {#Status#}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="stock_status">Status<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-align-left"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="stock_status"
+                                                name="stock_status" tabindex="-1" aria-hidden="true">
+                                            <option value="active">Active</option>
+                                            <option value="deactive">Deactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            {#Stock Product Sku#}
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">SKU ID<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-id-card-o"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="stock_sku"
+                                                name="stock_sku" tabindex="-1" aria-hidden="true">
+                                            {% for product in products %}
+                                                <option value="{{ product.sku }}">{{ product.product_name }}</option>
+                                            {% endfor %}
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#product-menu").addClass("active open");
+        $("#create-stock-menu").addClass("active");
+
+    </script>
+{% endblock %}

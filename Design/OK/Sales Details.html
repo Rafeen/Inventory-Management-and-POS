@@ -1,0 +1,167 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="col-md-12">
+
+        <div class="modal-content col-md-12">
+            <div class="modal-header">
+                <div class="row">
+                    <div class="col-md-6 ">
+m
+                        <h4 class="modal-title text-left" style="margin-top: 10px">Stock Details</h4>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="m-t-20 text-center pull-right">
+
+                            <button onclick="activeFunction();" id="edit"
+                                    class="btn btn-info active btn">
+                                <i class="fas fa-user-edit"></i> Edit
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-body">
+                <form class="m-b-30" _lpchecked="1">
+
+
+                    <div class="tab-content">
+
+
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-heading">Client Sales</div>
+                            <div class="panel-body">
+                                <!--Sku Name Field-->
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">SKU<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-archive"></i></span>
+                                            <input class="form-control" name="sku" type="text"
+                                                   id="sku"
+                                                   required="" disabled>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">Quantity<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-slack"></i></span>
+                                            <input class="form-control" name="quantity" type="text"
+                                                   id="quantity"
+                                                   required="" disabled>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">Client<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-male"></i></span>
+                                            <input class="form-control" name="client" type="text"
+                                                   id="client"
+                                                   required="" disabled>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="client_sales">Warehouse<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i class="fa fa-building-o"></i></span>
+                                            <input class="form-control" name="warehouse" type="text"
+                                                   id="warehouse"
+                                                   required="" disabled>
+                                        </div>
+
+                                    </div>
+                                </div>
+
+                                <div class="col-md-6">
+                                    <div class="form-group">
+                                        <label for="brand_status">Date <span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon"><i
+                                                    class="fa fa-calendar-o"></i></span>
+
+
+                                            <input class="form-control" name="date"
+                                                   type="date"
+                                                   value=""
+                                                   id="date" required="" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+            </div>
+            <div class="m-t-20 text-center ">
+                <a href="" target="_blank">
+                    <button  type="button" class="btn btn-info btn-flat btn-addon m-b-10 m-l-5 sweet-success sweetalert">
+
+                        <i class="fa fa-user"></i>Update
+
+                    </button>
+                </a>
+            </div>
+
+
+            </form>
+        </div>
+        <div class="col-md-2"></div>
+    </div>
+    </div>
+    <script type="text/javascript">
+
+        document.querySelector('.sweet-success').onclick = function () {
+            swal("Registration Completed 😀", "", "success")
+        };
+
+
+
+        function activeFunction() {
+            document.getElementById("sku").disabled = false;
+            document.getElementById("quantity").disabled = false;
+            document.getElementById("client").disabled = false;
+            document.getElementById("warehouse").disabled = false;
+
+            document.getElementById("date").disabled = false;
+            document.getElementById("sku_id").disabled = false;
+            document.getElementById("created_date").disabled = false;
+
+            document.getElementById("updated_date").disabled = false;
+
+        }
+
+
+
+</script>
+
+{% endblock %}

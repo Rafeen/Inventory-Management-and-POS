@@ -1,0 +1,123 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#add warehouse#}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">Create Warehouse</h4>
+        </div>
+        <div class="modal-body">
+            <form id='add-warehouse' class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                <div class="btn-right">
+                    <button type="submit" class="btn btn-info btn-flat btn-addon ">
+                        <i class="fa fa-home"></i>Create Warehouse
+                    </button>
+                </div>
+                <div class="tab-content">
+                    <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                        <div class="panel-body">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="name">Warehouse Name<span class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-home"></i></span>
+                                        <input class="form-control" name="wh_name" type="text" id="wh_name" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="address">Address<span
+                                            class="text-danger"></span> </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-address-card-o"></i></span>
+                                        <input class="form-control" name="address" type="text" id="wh_address"
+                                               required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="city">City <span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon">
+                                            <i class="fa fa-building"></i></span>
+                                        <input class="form-control" name="city" type="text"
+                                               value="" id="wh_city" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="control-label">Phone Number<span
+                                            class="text-danger"></span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-phone"
+                                                                           aria-hidden="true"></i></span>
+                                        <input class="form-control" name="Phone" type="tel" value=""
+                                               id="wh_phone" required="">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="role_id">Country<span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-globe"></i></span>
+                                        <input class="form-control" id="wh_country"
+                                               name="country" tabindex="-1" aria-hidden="true" required>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="status">Status <span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group"><span class="input-group-addon"><i
+                                            class="fa fa-align-left"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="wh_status"
+                                                name="user_status" tabindex="-1" aria-hidden="true" required>
+                                            <option value="active">Active</option>
+                                            <option value="deactive">Deactive</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label for="role_id">Type <span
+                                            class="text-danger">*</span>
+                                    </label>
+                                    <div class="input-group">
+                                        <span class="input-group-addon"><i class="fa fa-th-list"></i></span>
+                                        <select class="form-control select2-hidden-accessible" id="wh_type"
+                                                name="" tabindex="-1" aria-hidden="true" required>
+                                            <option value="Outlet">Outlet</option>
+                                            <option value="Store House">Store House</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#warehouse-menu").addClass("active open");
+        $("#create-warehouse").addClass("active");
+
+    </script>
+{% endblock %}

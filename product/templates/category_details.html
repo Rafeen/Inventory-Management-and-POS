@@ -1,0 +1,112 @@
+{% extends 'dashboard.html' %}
+
+
+{% block content %}
+    {#Category details page#}
+
+    <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="modal-content col-md-8">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Category Details</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-category" class="m-b-30" _lpchecked="1" data-parsley-validate="">
+                    <div class="btn-right">
+                        {#Fring-Edit Action Button#}
+                        <button onclick="activeFunction();" id="edit"
+                                class="btn btn-info active btn">
+                            <i class="fas fa-user-edit"></i> Edit
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                <!--Catagory Name Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="category_name">Catagory Name<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-list"></i></span>
+                                            <input class="form-control" name="category_name" type="text"
+                                                   value="{{ category.category_name }}"
+                                                   id="category_name"
+                                                   required="" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Parent Category Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="parent_id">Parent Id <span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-id-card"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="parent_id"
+                                                    name="parent_id" tabindex="-1" aria-hidden="true" disabled>
+                                                {% for category in categories %}
+                                                    <option value="{{ category.category_id }}">{{ category.category_name }}</option>
+                                                {% endfor %}
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="category_des">Catagory Description <span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <textarea value="{{ category.category_description }}" class="form-control" id="category_des" rows="3"
+                                                  placeholder="Text input"></textarea>
+                                    </div>
+                                </div>
+                                <!--Category Status Field-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="category_status">Catagory Status <span
+                                                class="text-danger"></span>
+                                        </label>
+                                        <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-align-left"></i></span>
+                                            <select class="form-control select2-hidden-accessible"
+                                                    id="category_status"
+                                                    name="category_status" tabindex="-1" aria-hidden="true" disabled>
+                                                <option value="active">Active</option>
+                                                <option value="deactive">Deactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="text-center">
+                        <button type="submit" class="btn btn-info btn-flat btn-addon"><i
+                                class="fa fa-list"></i>Update Category
+                        </button>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2"></div>
+        </div>
+    </div>
+
+    <script>
+
+        function activeFunction() {
+            document.getElementById("category_name").disabled = false;
+            document.getElementById("category_status").disabled = false;
+            document.getElementById("parent_id").disabled = false;
+            document.getElementById("category_des").disabled = false;
+            document.getElementById("category_status").disabled = false;
+        }
+
+    </script>
+
+{% endblock %}

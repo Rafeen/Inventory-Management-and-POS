@@ -1,0 +1,88 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#  category list page   #}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">All Product</h4>
+        </div>
+        {#Product List Table#}
+        <div class="modal-body">
+            <div class="bootstrap-data-table-panel "><br>
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered ">
+                    {#Table head#}
+                    <thead class="panel panel-success panel-table">
+                    <tr class="text-center">
+                        <th>Product Name</th>
+                        <th>Product Category</th>
+                        <th>Product Brand</th>
+                        <th>Price (BDT)</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    {#End of Table Head#}
+                    <tbody>
+                    {% for product in products %}
+                        <tr class="text-center">
+                            {#Product Data#}
+                            <td class="product_img"><img src="/static/images/product_1/product_image.png"
+                                                         class="img-thumbnail zoomify rounded-circle" id="test"
+                                                         style="transform: scale(1) translate(0px, 0px);">
+                                <h6>
+                                    <a class="link" href='{{ product.get_absolute_url }}'>{{ product.product_name }}</a>
+                                </h6>
+                            </td>
+                            <td>{{ product.category }}</td>
+                            <td>{{ product.brand }}</td>
+                            <td>{{ product.price }}</td>
+                            <td>
+                                <div class="dropdown ">
+                                    <button class="bg-custom-cst dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Edit
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-center">
+                                        <li><a href="{{ product.get_absolute_url }}">View</a></li>
+                                        <li><a href="#" id="product_barcode" data-toggle="modal"
+                                               data-target="#barcode_generate">Barcode</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- /# card -->
+    {#Barcode Modal#}
+    <div class="modal" id="barcode_generate" role="dialog">
+        <div class="modal-dialog">
+            {#Modal content#}
+            <div class="barcode_modal">
+                <div class="modal-header">
+                    <h4 class="modal-title">Product Barcode</h4>
+                </div>
+                <div class="modal-body text-center">
+                    {#Barcode image#}
+                    <img id="barcode" class=""/>
+                </div>
+                <div class="modal-footer">
+                    <!-- download button -->
+                    <button type="button" id="save_barcode" class="btn btn-info">save</button>
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                </div>
+            </div>
+            {#End of Barcode Modal#}
+        </div>
+    </div>
+{% endblock %}
+{% block script %}
+    <script>
+        $("#product-menu").addClass("active open");
+        $("#all-products-menu").addClass("active");
+        {#$("#test").zoomify();#}
+        {#$('.zoomify').zoomify(); // Default settings#}
+        $('.zoomify').zoomify({duration: 200}); // 1s duration
+    </script>
+{% endblock %}
+</script>

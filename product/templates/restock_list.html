@@ -1,0 +1,78 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#  restock list page   #}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">All Restock</h4>
+        </div>
+        <div class="modal-body">
+            <div class="bootstrap-data-table-panel "><br>
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                    <thead class="panel panel-success panel-table">
+                    <tr class="text-center">
+                        <th>Stock SKU</th>
+                        <th>Batch Number</th>
+                        <th>Purchase Price (BDT</th>
+                        <th>Purchase Tax</th>
+                        <th>Quantity</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for stock in stocks %}
+                        <tr class="text-center">
+                            <td class="product_img"><img src="/static/images/product_1/product_image.png"
+                                                         class="img-thumbnail zoomify rounded-circle" id="test"
+                                                         style="transform: scale(1) translate(0px, 0px);">
+                                <h6>
+                                    <a class="link" href='{{ stock.get_absolute_url }}'>{{ stock.sku }}</a>
+                                </h6>
+                            </td>
+                            <td>{{ stock.batch_number }}</td>
+                            <td>{{ stock.purchase_price }}</td>
+                            <td>{{ stock.purchase_tax }}</td>
+                            <td>{{ stock.stock_quantity }}</td>
+                            <td>{{ stock.status }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="bg-custom-cst dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Edit
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-center">
+                                        <li><a href="{{ stock.get_absolute_url }}">View</a></li>
+                                        <li><a href="#" id="restock_barcode" data-toggle="modal"
+                                               data-target="#barcode_generate">Barcode</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- /# card -->
+    <script>
+        $(document).ready(function () {
+            $("button-id").click(function () {
+                $.ajax({
+                    url: '',
+                    method: '',
+                    contentType:,
+                    data:,
+
+                });
+
+            });
+        });
+    </script>
+{% endblock %}
+{% block script %}
+    <script>
+        $("#product-menu").addClass("active open");
+        $("#all-restock-menu").addClass("active");
+
+    </script>
+{% endblock %}

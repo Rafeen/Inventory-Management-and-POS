@@ -1,0 +1,54 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    {#   brand list page   #}
+    <div class="modal-content col-md-12">
+        <div class="modal-header">
+            <h4 class="modal-title text-center">All Brands</h4>
+        </div>
+        <div class="modal-body">
+            <div class="bootstrap-data-table-panel"><br>
+                <table id="bootstrap-data-table-export" class="table table-striped table-bordered">
+                    <thead class="panel panel-success panel-table">
+                    {#Table head#}
+                    <tr class="text-center">
+                        <th>Brand Id</th>
+                        <th>Brand Name</th>
+                        <th>Brand Description</th>
+                        <th>Brand Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for brand in brands %}
+                        <tr class="text-center">
+                            <td>{{ brand.brand_id }}</td>
+                            <td><a class="link" href="{{ brand.get_absolute_url }}">{{ brand.brand_name }}</a></td>
+                            <td>{{ brand.brand_description }}</td>
+                            <td>{{ brand.status }}</td>
+                            <td>
+                                <div class="dropdown">
+                                    <button class="bg-custom-cst dropdown-toggle" type="button" data-toggle="dropdown">
+                                        Edit
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu dropdown-menu-center">
+                                        <li><a href="{{ brand.get_absolute_url }}">View</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div><!-- /# card -->
+    <script>
+    </script>
+{% endblock %}
+{% block script %}
+    <script>
+        $("#brands-menu").addClass("active open");
+        $("#all-brands-menu").addClass("active");
+    </script>
+{% endblock %}

@@ -1,0 +1,193 @@
+{% extends 'dashboard.html' %}
+
+
+{% block content %}
+    {# Fring- User details form #}
+    <div class="modal-content col-md-12">
+        {# Fring- added 2 columns in header #}
+        <div class="modal-header">
+            <h4 class="modal-title text-center">User Details</h4>
+        </div>
+        <div class="modal-body">
+            <form class="m-b-30" _lpchecked="1" action="{% url 'users:update_user' %}" method="POST"
+                  accept-charset="UTF-8" enctype="multipart/form-data"
+                  data-parsley-validate="">{% csrf_token %}
+                <div class="btn-right">
+                    <button onclick="activeFunction();" id="edit"
+                            class="btn btn-info active btn btn-right">
+                        <i class="fas fa-user-edit"></i> Edit
+                    </button>
+                </div>
+                <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                    <div class="panel-body">
+                        <div class="col-md-6">
+                            {# Fring - added disable attribute for every input form  #}
+                            <input name="user_id" type="hidden" value='{{ user.id }}'>
+                            <div class="form-group">
+                                <label for="name">Name <span class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-user"></i></span>
+                                    <input class="form-control" name="name" type="text"
+                                           id="name" value='{{ user.name }}'
+                                           required="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="email">Email Address<span
+                                        class="text-danger">*</span> </label>
+                                <div class="input-group">
+                                                    <span class="input-group-addon"><i
+                                                            class="fa fa-envelope"></i></span>
+                                    <input class="form-control" name="email" type="text"
+                                           id="email" value='{{ user.email }}'
+                                           required="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="password">Password <span
+                                        class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                                        <span class="input-group-addon"><i
+                                                                class="fa fa-lock"></i></span>
+                                    <input class="form-control" name="password" type="password"
+                                           id="password" required="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="control-label">Phone Number<span
+                                        class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                                    <span class="input-group-addon"><i class="fa fa-phone"
+                                                                                       aria-hidden="true"></i></span>
+                                    <input class="form-control" name="phone" type="phone"
+                                           id = "phone" value="{{ user.phone }}" required="" disabled>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="role_id">Designation<span
+                                        class="text-danger">*</span>
+                                </label>
+                                {#{% if user.designation is 'Manager'%}#}
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-id-card"></i></span>
+                                    <select class="form-control select2-hidden-accessible"
+                                            id="designation"
+                                            name="designation" tabindex="-1" aria-hidden="true" disabled>
+                                        <option value={{ user.designation }} hidden>{{ user.designation }}</option>
+                                        <option value="Manager" >Manager</option>
+                                        <option value="Seller" >Seller</option>
+                                        <option value="Shopkeeper">Shopkeeper</option>
+                                    </select>
+                                </div>
+                                {#{% endif %}#}
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="role_id">User Role <span
+                                        class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i class="fa fa-user"></i></span>
+                                    {# Fring-changed the id to role_id #}
+                                    <select class="form-control select2-hidden-accessible"
+                                            id="role_id"
+                                            name="role_id" tabindex="-1" aria-hidden="true" disabled>
+                                        <option value="s" {% if user.is_staff %} selected {% endif %}>Staff</option>
+                                        <option value="a" {% if user.is_admin %} selected {% endif %}>Admin</option>
+                                        <option value="v" {% if user.is_viewer %} selected {% endif %}>Viewer</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="role_id">User Status <span
+                                        class="text-danger">*</span>
+                                </label>
+                                <div class="input-group">
+                                    <span class="input-group-addon"><i
+                                            class="fa fa-align-left"></i></span>
+                                    <select class="form-control select2-hidden-accessible"
+                                            id="user_status"
+                                            name="user_status" tabindex="-1" aria-hidden="true" disabled="">
+                                        <option value="Active" {% if user.is_active %} selected {% endif %}>Active
+                                        </option>
+                                        <option value="Deactive" {% if not user.is_active %}
+                                                selected {% endif %}>Deactive</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        {# User Pic#}
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <div class="row div-margin-custom-3">
+                                    <label for="name">Upload Picture<span class="text-danger">*</span></label>
+                                </div>
+                                <input type="file" id="real-file" class="hidden"/>
+                                <button type="button" id="custom-button" class="btn btn-choose btn-flat">Choose
+                                    File
+                                </button>
+                                <span id="custom-text">No file chosen</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="m-t-20 text-center">
+                    <button type="submit"
+                            class="btn btn-info btn-flat btn-addon m-b-10 m-l-5">
+                        <i class="fa fa-user"></i>Update
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+        customBtn.addEventListener("click", function() {
+            realFileBtn.click();
+        });
+        realFileBtn.addEventListener("change", function() {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(
+                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                )[1];
+            } else {
+                customTxt.innerHTML = "No file chosen, yet.";
+            }
+        });
+        function activeFunction() {
+            document.getElementById("name").disabled = false;
+            {#document.getElementById("email").disabled = false;#}
+            document.getElementById("password").disabled = false;
+            document.getElementById("phone").disabled = false;
+            {% if request.user.is_admin %}
+                document.getElementById("role_id").disabled = false;
+                document.getElementById("user_status").disabled = false;
+                document.getElementById("designation").disabled = false;
+            {% endif %}
+            document.getElementById("chooseFile").disabled = false;
+        }
+        document.querySelector('.sweet-success').onclick = function () {
+            swal("Registration Completed", "", "success")
+        };
+    </script>
+{% endblock %}

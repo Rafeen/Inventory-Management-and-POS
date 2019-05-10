@@ -1,0 +1,130 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="col-md-12">
+        <div class="col-md-2"></div>
+        <div class="modal-content col-md-8">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">Bundle Product</h4>
+            </div>
+            <div class="modal-body">
+                <form id="add-bundle-product" class="m-b-30" _lpchecked="1">
+                    <div class="btn-right">
+                        <button type="submit" class="btn btn-info btn-flat btn-addon "><i
+                                class="fa fa-user"></i>Add Product to Bundle
+                        </button>
+                    </div>
+                    <div class="tab-content">
+                        <div id="home" class="panel panel-success m-t-15 tab-pane fade active in">
+                            <div class="panel-body">
+                                <!--Bundle Name-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_name">Bundle Name<span class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-id-card-o"></i></span>
+                                            <input id="bundle_id" type="hidden" value='{{ bundle.bundle_id }}'>
+
+                                            <input class="form-control" type="text"
+                                                   id="bundle_name" value="{{ bundle.bundle_name }}" disabled>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Product Name-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="status">Product Name<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-ticket"></i></span>
+                                            <select class="form-control select2-hidden-accessible" id="stock_id"
+                                                    tabindex="-1" aria-hidden="true">
+                                                {% for stock in stocks %}
+                                                    <option value="{{ stock.stock_id }}">{{ stock.sku.product_name }} [SKU: {{ stock.sku.sku }}]</option>
+                                                {% endfor %}
+                                            </select>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <!--Status-->
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <label for="brand_status">Status<span
+                                                class="text-danger">*</span>
+                                        </label>
+                                        <div class="input-group">
+                                            <span class="input-group-addon">
+                                                <i class="fa fa-money"></i></span>
+                                            <select class="form-control select2-hidden-accessible" id="bundleprod_status"
+                                                    tabindex="-1" aria-hidden="true">
+                                                <option value="active">Active</option>
+                                                <option value="deactive">Deactive</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="col-md-2">
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="bootstrap-data-table-panel"><br>
+                <table id="bootstrap-data-table-export" class=" panel panel-success table table-striped table-bordered">
+                    <thead>
+                    <tr class="panel-heading">
+                        <th>Product Name</th>
+                        <th>Status</th>
+                        <th>Actions</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    {% for bundleprod in bundleproducts %}
+                        <tr>
+
+                            <td>{{ bundleprod.stock.sku.product_name }}</td>
+                            <td>{{ bundleprod.status }}</td>
+                            <td class="text-center">
+                                <div class="dropdown">
+                                    <button class="bg-custom-cst dropdown-toggle" type="button" data-toggle="dropdown">Edit
+                                        <span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a href="#">View</a></li>
+                                        <li><a href="#">Active</a></li>
+                                        <li><a href="#">Print Barcode</a></li>
+                                        <li><a href="#">Delete</a></li>
+                                    </ul>
+                                </div>
+                            </td>
+
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+        document.querySelector('.sweet-success').onclick = function () {
+            swal("Registration Completed 😀", "", "success")
+        };
+    </script>
+
+{% endblock %}
+{% block script %}
+    <script>
+        $("#bundle-menu").addClass("active open");
+        $("#bundle-products-menu").addClass("active");
+    </script>
+{% endblock %}

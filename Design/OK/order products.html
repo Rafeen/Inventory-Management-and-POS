@@ -1,0 +1,82 @@
+{% extends 'dashboard.html' %}
+
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+
+    <div class=" container col-md-12">
+
+
+        <div class="row">
+            <div class="col-md-2">
+                <label class="font-custom" for="brand_name">Product Name<span class="text-danger">*</span>
+                </label>
+                <input type="text" name="product">
+            </div>
+
+            <div class="col-md-2">
+                <label class="font-custom" for="brand_name">Quantity<span class="text-danger">*</span>
+                </label>
+                <input type="number" name="quantity" min="1" max="99999999">
+            </div>
+
+
+            <div class="col-md-4">
+                <button type="button" class="btn btn-primary btn-info  btn-custom">
+                    <i class=""></i>Add
+                </button>
+            </div>
+        </div>
+
+        <table class="table">
+            <thead>
+            <tr class="font-bold">
+                <th>Product Name</th>
+                <th>Quantity</th>
+                <th>Actions</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td>John</td>
+                <td>34</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-info btn-custom-2">
+                        <i class=""></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-danger btn-info btn-custom-2">
+                        <i class=""></i>delete
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>Mary</td>
+                <td>60</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-info btn-custom-2">
+                        <i class=""></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-danger btn-info btn-custom-2">
+                        <i class=""></i>delete
+                    </button>
+                </td>
+            </tr>
+            <tr>
+                <td>July</td>
+                <td>90</td>
+                <td>
+                    <button type="button" class="btn btn-primary btn-info btn-custom-2">
+                        <i class=""></i>Edit
+                    </button>
+                    <button type="button" class="btn btn-danger btn-info btn-custom-2">
+                        <i class=""></i>delete
+                    </button>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+
+    </div>
+
+
+
+{% endblock %}

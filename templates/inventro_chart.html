@@ -1,0 +1,51 @@
+{% extends 'dashboard.html' %}
+{% load static %}
+
+{% block content %}
+    {#   PUT YPUR CODE BELOW    #}
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card alert">
+                <div class="card-header">
+                    <h4>Depleting Products</h4>
+                </div>
+                <div class="flot-container">
+                    <canvas id="product-sell"></canvas>
+                </div>
+            </div><!-- /# card -->
+        </div><!-- /# column -->
+
+        <div class="col-lg-6">
+            <div class="card alert">
+                <div class="card-header">
+                    <h4>Star Products</h4>
+                </div>
+                <div class="flot-container">
+                    <canvas id="total-sell"></canvas>
+                </div>
+            </div><!-- /# card -->
+        </div><!-- /# column -->
+    </div><!-- /# row -->
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card alert">
+                <div class="card-header">
+                    <h4>Dog Products</h4>
+                </div>
+                <div class="flot-container">
+                    <canvas id="stock"></canvas>
+                </div>
+            </div><!-- /# card -->
+        </div><!-- /# column -->
+
+
+    </div><!-- /# main content -->
+
+
+
+
+
+
+
+
+{% endblock %}

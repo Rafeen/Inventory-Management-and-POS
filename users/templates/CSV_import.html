@@ -1,0 +1,70 @@
+{% extends 'dashboard.html' %}
+{% block content %}
+    <div class="col-md-12">
+        <div class="modal-content col-md-12">
+            <div class="modal-header">
+                <h4 class="modal-title text-center">CSV File Sample</h4>
+            </div>
+            <div class="modal-body">
+                <div class="container-fluid">
+                    <section class="content">
+                        <form method="POST" action="{% url 'users:user_csv_import' %}" accept-charset="UTF-8"
+                              enctype="multipart/form-data">
+                            <div class="btn-right">
+                                <button type="button"
+                                        class="btn btn-info btn-flat btn-addon"><i
+                                        class="fa fa-user"></i>Submit
+                                </button>
+                            </div>
+                            <div class="background-csv text-center">
+                                <img src="/static/images/csv_demo.jpg" style="width: 100%;height: 100%;" alt="Upload file format"/>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-md-12">
+                                    <div class="form-group">
+                                        <div class="row div-margin-custom-3">
+                                            <label for="name">Upload your file in the format above<span class="text-danger">*</span></label>
+                                        </div>
+                                        <input type="file" id="real-file" class="hidden"/>
+                                        <button type="button" id="custom-button" class="btn btn-choose btn-flat">Choose File
+                                        </button>
+                                        <span id="custom-text">No file chosen</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </form>
+                    </section>
+                </div><!-- /# main -->
+            </div>
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+        const realFileBtn = document.getElementById("real-file");
+        const customBtn = document.getElementById("custom-button");
+        const customTxt = document.getElementById("custom-text");
+        customBtn.addEventListener("click", function () {
+            realFileBtn.click();
+        });
+        realFileBtn.addEventListener("change", function () {
+            if (realFileBtn.value) {
+                customTxt.innerHTML = realFileBtn.value.match(
+                    /[\/\\]([\w\d\s\.\-\(\)]+)$/
+                )[1];
+            } else {
+                customTxt.innerHTML = "No file chosen";
+            }
+        });
+
+    </script>
+{% endblock %}
+
+{% block script %}
+    <script>
+
+        $("#user-menu").addClass("active open");
+        $("#upload-csv-file-menu").addClass("active");
+
+    </script>
+{% endblock %}
